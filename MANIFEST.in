@@ -1,0 +1,8 @@
+recursive-include login/static *
+recursive-include login/templates *
+
+include LICENSE
+include README
+include *.txt
+
+prune example/
