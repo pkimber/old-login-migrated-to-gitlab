@@ -67,19 +67,3 @@ Usage
   django-admin.py runserver
 
 You can log in with user ``staff``, password ``staff``...
-
-Release
-=======
-
-To release the application:
-
-::
-
-  fab -f fabric/release.py dist:prefix=pkimber,pypirc=dev
-  git push -u origin master
-
-To check the contents of the distribution:
-
-::
-
-  tar -ztvf dist/pkimber-login-0.0.08.tar.gz
