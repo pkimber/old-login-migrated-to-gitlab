@@ -67,3 +67,8 @@ Usage
   django-admin.py runserver
 
 You can log in with user ``staff``, password ``staff``...
+
+Release
+=======
+
+https://github.com/pkimber/cloud_docs
