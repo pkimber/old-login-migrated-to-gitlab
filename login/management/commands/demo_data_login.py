@@ -1,7 +1,9 @@
 from django.core.management.base import BaseCommand
 
-from login.tests.model_maker import make_superuser
-from login.tests.model_maker import make_user
+from login.tests.scenario import (
+    user_contractor,
+    user_default,
+)
 
 
 class Command(BaseCommand):
@@ -9,7 +11,6 @@ class Command(BaseCommand):
     help = "Create demo data for 'login'"
 
     def handle(self, *args, **options):
-        make_superuser('admin', 'admin')
-        make_user('staff', 'staff', is_staff=True)
-        make_user('web', 'web')
+        user_contractor()
+        user_default()
         print("Created 'login' demo data...")
