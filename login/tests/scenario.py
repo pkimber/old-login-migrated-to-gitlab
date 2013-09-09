@@ -6,12 +6,16 @@ from login.tests.model_maker import (
 )
 
 
-def get_fred():
+def get_user_fred():
     return User.objects.get(username='fred')
 
 
-def get_sara():
+def get_user_sara():
     return User.objects.get(username='sara')
+
+
+def get_user_staff():
+    return User.objects.get(username='staff')
 
 
 def user_default():
