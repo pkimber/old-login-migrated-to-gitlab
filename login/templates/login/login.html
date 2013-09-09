@@ -9,12 +9,11 @@
 {% endblock sub_heading %}
 
 {% block content %}
-  <div class="marketing-ribbon">
-    <div class="l-box">
+  <div class="pure-g-r">
+    <div class="pure-u-1">
       {% if form.errors %}
         <p>Your username and password didn't match. Please try again.</p>
       {% endif %}
-      
       <form method="post" action="{% url 'login' %}" class="pure-form pure-form-stacked">
         {% csrf_token %}
         <fieldset>
