@@ -18,6 +18,9 @@ urlpatterns = patterns(
     url(regex=r'^',
         view=include('login.urls')
         ),
+    url(regex=r'^accounts/',
+        view=include('registration.backends.default.urls')
+        ),
     url(regex=r'^$',
         view=TemplateView.as_view(template_name='example/home.html'),
         name='project.home'

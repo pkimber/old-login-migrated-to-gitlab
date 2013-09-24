@@ -62,9 +62,11 @@ Usage
 ::
 
   workon dev_login
-  django-admin.py syncdb --noinput
-  django-admin.py demo_data_login
-  django-admin.py runserver
+  py.test -x && \
+      touch temp.db && rm temp.db && \
+      django-admin.py syncdb --noinput && \
+      django-admin.py demo_data_login && \
+      django-admin.py runserver
 
 You can log in with user ``staff``, password ``staff``...
 

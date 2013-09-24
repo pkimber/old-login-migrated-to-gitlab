@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block title %}
+  Login
+{% endblock title %}
+
+{% block heading %}
+  Login
+{% endblock heading %}
+
+{% block sub_heading %}
+  Example App
+{% endblock sub_heading %}
+
+{% block menu %}
+  <li>
+    <a href="{% url "registration_register" %}">Register</a>
+  </li>
+  <li>
+    <a href="{% url "admin:index" %}">Admin</a>
+  </li>
+  {{ block.super }}
+{% endblock menu %}
+
+{% block footer %}
+{% endblock footer %}

@@ -19,16 +19,20 @@ def get_user_staff():
 
 
 def user_default():
-    # superuser
+    """
+    admin is a superuser
+    staff is a member of staff
+    web is a standard user with no extra permissions
+    """
     make_superuser('admin')
-    # member of staff
     make_user('staff', is_staff=True)
-    # standard user with no extra permissions
     make_user('web')
 
 
 def user_contractor():
-    # fred is a farmer
+    """
+    fred is a farmer
+    sara is a smallholder
+    """
     make_user('fred')
-    # steph is a smallholder
     make_user('sara')

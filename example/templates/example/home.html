@@ -1,15 +1,8 @@
-{% extends "base.html" %}
-
-{% block title %}
-  Home
-{% endblock title %}
-
-{% block header %}
-  <h1>Example</h1>
-  <h2>Home Page</h2>
-{% endblock header %}
+{% extends "project/base.html" %}
 
 {% block content %}
+  <div class="pure-u-1">
+    <div class="l-box">
   {% if user.is_authenticated %}
     <table class="pure-table">
       <thead>
@@ -31,7 +24,10 @@
 
   {% if not user.is_authenticated %}
     <p>
-      <a href="{% url 'login' %}">Login</a>
+      <a href="{% url 'registration_register' %}">Register</a>
+    </p>
+    <p>
+      <a href="{% url 'auth_login' %}">Login</a>
     </p>
     <p>
       <a href="{% url 'example.test' %}">Navigate to login protected test page</a>
@@ -43,4 +39,7 @@
       <a href="{% url 'logout' %}">Logout</a>
     </p>
   {% endif %}
+
+    </div>
+  </div>
 {% endblock content %}
