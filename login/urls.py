@@ -3,10 +3,6 @@ from django.conf.urls import (
     url,
 )
 from django.core.urlresolvers import reverse_lazy
-from django.views.generic.base import TemplateView
-
-from registration.backends.default.views import ActivationView
-from registration.backends.default.views import RegistrationView
 
 
 urlpatterns = patterns(

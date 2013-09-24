@@ -5,15 +5,21 @@
 {% endblock sub_title %}
 
 {% block content %}
-  {% include '_form.html' with legend='Login' submit='Log in' %}
-  <p>Forgot password?
-    <a href="{% url 'auth_password_reset' %}">
-      Reset it!
-    </a>
-  </p>
-  <p>Not member?
-    <a href="{% url 'registration_register' %}">
-      Register!
-    </a>
-  </p>
+  <div class="pure-g-r">
+    <div class="pure-u-1">
+      {% include '_form.html' with legend='Login' submit='Log in' %}
+      <div>
+        Not a member?
+        <a href="{% url 'registration_register' %}">
+          Click here to register...
+        </a>
+      </div>
+      <div>
+        Forgot your password?
+        <a href="{% url 'auth_password_reset' %}">
+          Click here to reset it...
+        </a>
+      </div>
+    </div>
+  </div>
 {% endblock %}
