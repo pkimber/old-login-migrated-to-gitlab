@@ -1,20 +1,26 @@
-{% extends "base.html" %}
+{% extends "project/base.html" %}
 
-{% block title %}
-  Test
-{% endblock title %}
+{% block sub_title %}
+  Example - Test Page
+{% endblock sub_title %}
 
 {% block content %}
-  <h1>Example - Test Page</h1>
-  <p>Page is used in unit tests for login with redirect parameter</p>
-  {% if not user.is_authenticated %}
-    <p>
-      <a href="{% url 'login' %}">Login</a>
-    </p>
-  {% endif %}
-  {% if user.is_authenticated %}
-    <p>
-      <a href="{% url 'logout' %}">Logout</a>
-    </p>
-  {% endif %}
+  <div class="pure-g-r">
+    <div class="pure-u-1">
+      <p>
+        Page is used in unit tests for login
+        <strong>required</strong> with redirect parameter
+      </p>
+      {% if not user.is_authenticated %}
+        <p>
+          <a href="{% url 'login' %}">Login</a>
+        </p>
+      {% endif %}
+      {% if user.is_authenticated %}
+        <p>
+          <a href="{% url 'logout' %}">Logout</a>
+        </p>
+      {% endif %}
+    </div>
+  </div>
 {% endblock content %}
