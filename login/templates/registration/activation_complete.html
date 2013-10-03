@@ -1,6 +1,17 @@
-{% extends "base.html" %}
-{% load i18n %}
+{% extends "project/base.html" %}
+
+{% block sub_title %}
+  Activation complete
+{% endblock sub_title %}
+
+{% block sub_heading %}
+  Activation complete
+{% endblock sub_heading %}
 
 {% block content %}
-<p>{% trans "Your account is now activated." %}</p>
+  <div class="pure-g-r">
+    <div class="pure-u-1">
+      Your account is now activated.
+    </div>
+  </div>
 {% endblock %}
