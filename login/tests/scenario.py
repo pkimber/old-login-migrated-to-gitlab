@@ -18,7 +18,11 @@ def get_user_staff():
     return User.objects.get(username='staff')
 
 
-def user_default():
+def get_user_web():
+    return User.objects.get(username='web')
+
+
+def default_scenario_login():
     """
     admin is a superuser
     staff is a member of staff

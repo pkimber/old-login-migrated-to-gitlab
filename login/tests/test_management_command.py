@@ -2,7 +2,7 @@ from django.test import TestCase
 from login.management.commands.demo_data_login import Command
 
 
-class TestComment(TestCase):
+class TestCommand(TestCase):
 
     def test_command(self):
         """
