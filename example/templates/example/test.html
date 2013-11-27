@@ -7,6 +7,12 @@
 {% block content %}
   <div class="pure-g-r">
     <div class="pure-u-1">
+      <h2>
+        Congratulations {{ user.username }}... you are logged in!
+      </h2>
+      <p>
+        <a href="{% url 'project.home' %}">Home</a>
+      </p>
       <p>
         Page is used in unit tests for login
         <strong>required</strong> with redirect parameter

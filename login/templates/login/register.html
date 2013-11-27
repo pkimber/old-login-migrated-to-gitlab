@@ -1,0 +1,18 @@
+{% extends "project/base.html" %}
+
+{% block sub_title %}
+  Register
+{% endblock sub_title %}
+
+{% block sub_heading %}
+  Regiser
+{% endblock sub_heading %}
+
+{% block content %}
+  <div class="pure-g-r">
+    <div class="pure-u-1">
+      {% include '_form.html' with legend='Registration' submit='Log in' %}
+    </div>
+  </div>
+{% endblock %}
+

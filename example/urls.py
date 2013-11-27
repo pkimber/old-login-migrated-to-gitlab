@@ -26,7 +26,7 @@ urlpatterns = patterns(
         name='project.home'
         ),
     url(r'^home/user/$',
-        view=RedirectView.as_view(url=reverse_lazy('project.home')),
+        view=RedirectView.as_view(url=reverse_lazy('example.test')),
         name='project.home.user'
         ),
     url(regex=r'^test/$',

@@ -4,6 +4,8 @@ from django.conf.urls import (
 )
 from django.core.urlresolvers import reverse_lazy
 
+from .views import RegisterCreateView
+
 
 urlpatterns = patterns(
     '',
@@ -21,5 +23,9 @@ urlpatterns = patterns(
             'template_name': 'login/logged_out.html',
         },
         name='logout'
+        ),
+    url(regex=r'^accounts/register/$',
+        view=RegisterCreateView.as_view(),
+        name='register'
         ),
 )
