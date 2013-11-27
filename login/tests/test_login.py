@@ -22,7 +22,7 @@ class TestLogin(TestCase):
             'username': 'patrick',
             'password': 'patrick',
         }
-        url = reverse('auth_login')
+        url = reverse('login')
         response = self.client.post(url, data)
         # check the user was redirected
         self.assertEqual(302, response.status_code)
@@ -40,7 +40,7 @@ class TestLogin(TestCase):
             'username': 'patrick',
             'password': 'patrick',
         }
-        url = '%s?next=/test/' % reverse('auth_login')
+        url = '%s?next=/test/' % reverse('login')
         response = self.client.post(url, data)
         # check the user was redirected to the test page
         self.assertRedirects(response, reverse('example.test'))

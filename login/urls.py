@@ -7,6 +7,13 @@ from django.core.urlresolvers import reverse_lazy
 
 urlpatterns = patterns(
     '',
+    url(regex=r'^accounts/login/$',
+        view='django.contrib.auth.views.login',
+        kwargs={
+            'template_name': 'login/login.html',
+        },
+        name='login'
+        ),
     url(regex=r'^accounts/logout/$',
         view='django.contrib.auth.views.logout',
         kwargs={

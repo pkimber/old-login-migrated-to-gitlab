@@ -114,7 +114,6 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'login',
     'django.contrib.admin',
-    'registration',
     'base',
     'example',
 )
@@ -151,6 +150,3 @@ LOGGING = {
 # URL where requests are redirected after login when the contrib.auth.login
 # view gets no next parameter.
 LOGIN_REDIRECT_URL = reverse_lazy('project.home.user')
-
-# django-registration
-ACCOUNT_ACTIVATION_DAYS = 7
