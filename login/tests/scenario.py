@@ -6,6 +6,9 @@ from login.tests.model_maker import (
 )
 
 
+STAFF = 'staff'
+
+
 def get_user_fred():
     return User.objects.get(username='fred')
 
@@ -15,7 +18,7 @@ def get_user_sara():
 
 
 def get_user_staff():
-    return User.objects.get(username='staff')
+    return User.objects.get(username=STAFF)
 
 
 def get_user_web():
@@ -29,7 +32,7 @@ def default_scenario_login():
     web is a standard user with no extra permissions
     """
     make_superuser('admin')
-    make_user('staff', is_staff=True)
+    make_user(STAFF, is_staff=True)
     make_user('web')
 
 
