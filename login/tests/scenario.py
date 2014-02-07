@@ -13,6 +13,10 @@ def get_user_fred():
     return User.objects.get(username='fred')
 
 
+def get_user_mike():
+    return User.objects.get(username='mike')
+
+
 def get_user_sara():
     return User.objects.get(username='sara')
 
@@ -39,7 +43,9 @@ def default_scenario_login():
 def user_contractor():
     """
     fred is a farmer
+    mike is a merchant
     sara is a smallholder
     """
     make_user('fred')
+    make_user('mike')
     make_user('sara')
