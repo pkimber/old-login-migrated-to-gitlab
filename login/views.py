@@ -1,6 +1,6 @@
 # -*- encoding: utf-8 -*-
-
 from __future__ import unicode_literals
+
 from django.conf import settings
 from django.contrib.auth import (
     authenticate,
@@ -8,10 +8,7 @@ from django.contrib.auth import (
 )
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from django.core.urlresolvers import reverse
-from django.views.generic import (
-    CreateView,
-)
+from django.views.generic import CreateView
 
 
 class RegisterCreateView(CreateView):
