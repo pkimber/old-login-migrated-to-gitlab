@@ -29,7 +29,7 @@ setup(
             'templates/registration/*.*',
         ],
     },
-    version='0.1.02',
+    version='0.1.03',
     description='User Login',
     author='Patrick Kimber',
     author_email='code@pkimber.net',
