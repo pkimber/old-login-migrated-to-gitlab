@@ -15,12 +15,6 @@ to make sure a file has been created for you)::
   mkvirtualenv dev_login
   pip install -r requirements/local.txt
 
-  echo "export DJANGO_SETTINGS_MODULE=example.dev_patrick" >> $VIRTUAL_ENV/bin/postactivate
-  echo "unset DJANGO_SETTINGS_MODULE" >> $VIRTUAL_ENV/bin/postdeactivate
-
-  add2virtualenv .
-  deactivate
-
 Testing
 =======
 
