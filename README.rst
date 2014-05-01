@@ -1,7 +1,7 @@
 User Login
 **********
 
-Django Application for User login/logout/registration etc
+Django Application for user login and logout etc.
 
 Install
 =======
@@ -9,23 +9,21 @@ Install
 Virtual Environment
 -------------------
 
-Note: replace ``patrick`` with your name (checking in the ``example`` folder
-to make sure a file has been created for you)::
+::
 
-  mkvirtualenv dev_login
+  pyvenv-3.4 --without-pip venv-login
+  source venv-login/bin/activate
+  wget https://raw.githubusercontent.com/pypa/pip/master/contrib/get-pip.py
+  python get-pip.py
+
   pip install -r requirements/local.txt
 
 Testing
 =======
 
-We use ``pytest-django``::
+::
 
-  workon dev_login
   find . -name '*.pyc' -delete
-  py.test
-
-To stop on first failure::
-
   py.test -x
 
 Usage
@@ -33,7 +31,6 @@ Usage
 
 ::
 
-  workon dev_login
   py.test -x && \
       touch temp.db && rm temp.db && \
       django-admin.py syncdb --noinput && \
@@ -45,4 +42,4 @@ You can log in with user ``staff``, password ``staff``...
 Release
 =======
 
-https://github.com/pkimber/cloud_docs
+https://django-dev-and-deploy-using-salt.readthedocs.org/
