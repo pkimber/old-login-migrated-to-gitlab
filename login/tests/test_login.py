@@ -1,6 +1,6 @@
 # -*- encoding: utf-8 -*-
-
 from __future__ import unicode_literals
+
 """
 Test login and logout templates
 
@@ -11,6 +11,7 @@ http://stackoverflow.com/questions/5660952/django-test-client-test-that-user-was
 from django.contrib.auth import SESSION_KEY
 from django.core.urlresolvers import reverse
 from django.test import TestCase
+
 from login.tests.model_maker import make_user
 
 

@@ -1,9 +1,13 @@
 # -*- encoding: utf-8 -*-
-
 from __future__ import unicode_literals
+
 from django.conf.urls import (
     patterns,
     url,
+)
+from django.contrib.auth.views import (
+    password_reset,
+    password_reset_done,
 )
 from django.core.urlresolvers import reverse_lazy
 
@@ -41,6 +45,22 @@ urlpatterns = patterns(
         },
         name='password_change_done'
         ),
+
+    url(regex=r'^accounts/password/reset/$',
+        view=password_reset,
+        kwargs={
+            'template_name': 'project/password_reset.html'
+        },
+        name='password_reset'
+        ),
+    url(regex=r'^accounts/password/reset/done/$',
+        view=password_reset_done,
+        kwargs={
+            'template_name': 'project/password_reset_done.html'
+        },
+        name='password_reset_done'
+        ),
+
     url(regex=r'^accounts/register/$',
         view=RegisterCreateView.as_view(),
         name='register'
