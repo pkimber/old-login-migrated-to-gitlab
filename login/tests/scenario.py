@@ -38,9 +38,14 @@ def default_scenario_login():
     staff is a member of staff
     web is a standard user with no extra permissions
     """
-    make_superuser('admin')
-    make_user(STAFF, is_staff=True)
-    make_user('web')
+    super_user = make_superuser('admin')
+    super_user.email = 'admin@pkimber.net'
+    super_user.save()
+    make_user(STAFF, email='staff@pkimber.net', is_staff=True)
+    make_user(
+        'web', email='web@pkimber.net',
+        first_name='William', last_name='Webber'
+    )
 
 
 def user_contractor():
@@ -49,6 +54,6 @@ def user_contractor():
     mike is a merchant
     sara is a smallholder
     """
-    make_user('fred')
-    make_user('mike')
-    make_user('sara')
+    make_user('fred', email='fred@pkimber.net')
+    make_user('mike', email='mike@pkimber.net')
+    make_user('sara', email='sara@pkimber.net')

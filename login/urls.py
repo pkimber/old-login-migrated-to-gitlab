@@ -11,8 +11,6 @@ from django.contrib.auth.views import (
 )
 from django.core.urlresolvers import reverse_lazy
 
-from .views import RegisterCreateView
-
 
 urlpatterns = patterns(
     '',
@@ -45,7 +43,6 @@ urlpatterns = patterns(
         },
         name='password_change_done'
         ),
-
     url(regex=r'^accounts/password/reset/$',
         view=password_reset,
         kwargs={
@@ -59,10 +56,5 @@ urlpatterns = patterns(
             'template_name': 'project/password_reset_done.html'
         },
         name='password_reset_done'
-        ),
-
-    url(regex=r'^accounts/register/$',
-        view=RegisterCreateView.as_view(),
-        name='register'
         ),
 )

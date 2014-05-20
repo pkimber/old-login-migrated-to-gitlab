@@ -1,20 +1,29 @@
 # -*- encoding: utf-8 -*-
-
 from __future__ import unicode_literals
+
 from django.conf.urls import (
     include,
     patterns,
     url,
 )
 from django.contrib import admin
-from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse_lazy
 from django.views.generic import (
     RedirectView,
     TemplateView,
 )
 
+from login.views import RegisterCreateView
+
+from .views import (
+    MyUpdateUserNameView,
+    MyUpdateUserPasswordView,
+    TestView,
+)
+
+
 admin.autodiscover()
+
 
 urlpatterns = patterns(
     '',
@@ -33,9 +42,19 @@ urlpatterns = patterns(
         name='project.home.user'
         ),
     url(regex=r'^test/$',
-        view=login_required(
-            TemplateView.as_view(template_name='example/test.html'),
-        ),
+        view=TestView.as_view(),
         name='example.test'
+        ),
+    url(regex=r'^accounts/register/$',
+        view=RegisterCreateView.as_view(),
+        name='register'
+        ),
+    url(regex=r'^accounts/user/(?P<pk>\d+)/username/$',
+        view=MyUpdateUserNameView.as_view(),
+        name='update_user_name',
+        ),
+    url(regex=r'^accounts/user/(?P<pk>\d+)/password/$',
+        view=MyUpdateUserPasswordView.as_view(),
+        name='update_user_password',
         ),
 )

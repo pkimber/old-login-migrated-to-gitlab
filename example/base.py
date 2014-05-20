@@ -151,6 +151,12 @@ LOGGING = {
     }
 }
 
+FTP_STATIC_DIR = None
+FTP_STATIC_URL = None
+
 # URL where requests are redirected after login when the contrib.auth.login
 # view gets no next parameter.
 LOGIN_REDIRECT_URL = reverse_lazy('project.home.user')
+
+SENDFILE_BACKEND = 'sendfile.backends.development'
+SENDFILE_ROOT = 'media-private'

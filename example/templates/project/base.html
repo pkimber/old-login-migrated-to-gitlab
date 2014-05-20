@@ -19,6 +19,9 @@
       <a href="{% url "register" %}">Register</a>
     </li>
   {% endif %}
+  <li>
+    <a href="{% url 'example.test' %}">Test</a>
+  </li>
   {% if user.is_authenticated %}
     <li>
       <a href="{% url "admin:index" %}">Admin</a>
