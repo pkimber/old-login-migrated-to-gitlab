@@ -15,6 +15,10 @@ class TestViewPermissions(PermTestCase):
     def setUp(self):
         default_scenario_login()
 
+    def test_register(self):
+        url = reverse('register')
+        self.assert_anon(url)
+
     def test_test_view(self):
         url = reverse('example.test')
         self.assert_logged_in(url)
