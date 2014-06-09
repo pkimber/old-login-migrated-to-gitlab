@@ -51,7 +51,7 @@ urlpatterns = patterns(
         },
         name='password_reset'
         ),
-    url(regex=r'^accounts/password/reset/(?P<uidb36>[0-9A-Za-z]+)-(?P<token>.+)/$',
+    url(regex=r'^accounts/password/reset/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
         view=password_reset_confirm,
         kwargs={
             'template_name': 'project/password_reset_confirm.html',
