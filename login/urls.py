@@ -7,6 +7,7 @@ from django.conf.urls import (
 )
 from django.contrib.auth.views import (
     password_reset,
+    password_reset_confirm,
     password_reset_done,
 )
 from django.core.urlresolvers import reverse_lazy
@@ -49,6 +50,13 @@ urlpatterns = patterns(
             'template_name': 'project/password_reset.html'
         },
         name='password_reset'
+        ),
+    url(regex=r'^accounts/password/reset/(?P<uidb36>[0-9A-Za-z]+)-(?P<token>.+)/$',
+        view=password_reset_confirm,
+        kwargs={
+            'template_name': 'project/password_reset_confirm.html',
+        },
+        name='password_reset_confirm'
         ),
     url(regex=r'^accounts/password/reset/done/$',
         view=password_reset_done,
