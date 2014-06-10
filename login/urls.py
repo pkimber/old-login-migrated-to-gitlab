@@ -55,17 +55,13 @@ urlpatterns = patterns(
     # https://westcountrycoders.co.uk/accounts/password/reset/NTMxNg/3sc-d2a52e19e0d239ea538e/
     # Reverse for 'password_reset_complete' with arguments '()' and keyword arguments '{}' not found. 0 pattern(s) tried: []
     # password_reset_complete
-
-    url(regex=r'^accounts/password/reset/done/$',
+    url(regex=r'^accounts/password/reset/complete/$',
         view=password_reset_complete,
         kwargs={
             'template_name': 'project/password_reset_complete.html'
         },
         name='password_reset_complete'
-    ),
-
-
-
+        ),
     url(regex=r'^accounts/password/reset/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
         view=password_reset_confirm,
         kwargs={

@@ -151,6 +151,8 @@ LOGGING = {
     }
 }
 
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
 FTP_STATIC_DIR = None
 FTP_STATIC_URL = None
 
