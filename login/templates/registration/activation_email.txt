@@ -1,5 +1,0 @@
-To activate your account at {{ site.name }}, click on the following link:
-
-https://{{ site.domain }}{% url 'registration_activate' activation_key %}
-
-This link is valid for {{ expiration_days }} days.

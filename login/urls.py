@@ -7,6 +7,7 @@ from django.conf.urls import (
 )
 from django.contrib.auth.views import (
     password_reset,
+    password_reset_complete,
     password_reset_confirm,
     password_reset_done,
 )
@@ -51,6 +52,20 @@ urlpatterns = patterns(
         },
         name='password_reset'
         ),
+    # https://westcountrycoders.co.uk/accounts/password/reset/NTMxNg/3sc-d2a52e19e0d239ea538e/
+    # Reverse for 'password_reset_complete' with arguments '()' and keyword arguments '{}' not found. 0 pattern(s) tried: []
+    # password_reset_complete
+
+    url(regex=r'^accounts/password/reset/done/$',
+        view=password_reset_complete,
+        kwargs={
+            'template_name': 'project/password_reset_complete.html'
+        },
+        name='password_reset_complete'
+    ),
+
+
+
     url(regex=r'^accounts/password/reset/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
         view=password_reset_confirm,
         kwargs={
