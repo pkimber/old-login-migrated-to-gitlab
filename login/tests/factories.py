@@ -6,15 +6,19 @@ import factory
 from django.contrib.auth.models import User
 
 
+TEST_PASSWORD = 'letmein'
+
+
 class UserFactory(factory.django.DjangoModelFactory):
+    """Password is always set to 'pass'."""
 
     class Meta:
         model = User
 
     is_active = True
-    is_staff = False,
+    is_staff = False
     is_superuser = False
-    password = factory.PostGenerationMethodCall('set_password', 'pass')
+    password = factory.PostGenerationMethodCall('set_password', TEST_PASSWORD)
 
     @factory.sequence
     def first_name(n):

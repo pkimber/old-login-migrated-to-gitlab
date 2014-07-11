@@ -3,6 +3,7 @@
 -e ../base
 beautifulsoup4
 fabric
+factory-boy
 gitpython
 hgapi
 ipdb
