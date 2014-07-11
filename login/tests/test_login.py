@@ -12,6 +12,7 @@ from django.contrib.auth import SESSION_KEY
 from django.core.urlresolvers import reverse
 from django.test import TestCase
 
+from login.tests.factories import TEST_PASSWORD
 from login.tests.model_maker import make_user
 
 
@@ -24,7 +25,7 @@ class TestLogin(TestCase):
         # login the user
         data = {
             'username': 'patrick',
-            'password': 'patrick',
+            'password': TEST_PASSWORD,
         }
         url = reverse('login')
         response = self.client.post(url, data)
@@ -42,7 +43,7 @@ class TestLogin(TestCase):
         # login the user
         data = {
             'username': 'patrick',
-            'password': 'patrick',
+            'password': TEST_PASSWORD,
         }
         url = '%s?next=/test/' % reverse('login')
         response = self.client.post(url, data)
@@ -57,7 +58,7 @@ class TestLogin(TestCase):
         # check the user is not logged in
         self.assertNotIn(SESSION_KEY, self.client.session)
         # login the user
-        self.client.login(username='patrick', password='patrick')
+        self.client.login(username='patrick', password=TEST_PASSWORD)
         # check the user was logged in
         self.assertIn(SESSION_KEY, self.client.session)
         self.assertEquals(user_pk, self.client.session[SESSION_KEY])

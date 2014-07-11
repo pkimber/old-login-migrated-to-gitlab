@@ -10,7 +10,17 @@ TEST_PASSWORD = 'letmein'
 
 
 class UserFactory(factory.django.DjangoModelFactory):
-    """Password is always set to 'pass'."""
+    """Password is always set to TEST_PASSWORD (see above).
+
+    To create a simple user::
+
+        UserFactory(username='web')
+
+    To create a superuser with the name 'staff'::
+
+      UserFactory(username='staff', is_staff=True, is_superuser=True)
+
+    """
 
     class Meta:
         model = User
