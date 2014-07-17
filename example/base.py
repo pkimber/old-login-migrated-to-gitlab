@@ -116,6 +116,7 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'compressor',
     'login',
     'django.contrib.admin',
     'base',
@@ -150,6 +151,9 @@ LOGGING = {
         },
     }
 }
+
+# django-compressor
+COMPRESS_ENABLED = False # defaults to the opposite of DEBUG
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
