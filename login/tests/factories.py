@@ -31,9 +31,13 @@ class UserFactory(factory.django.DjangoModelFactory):
     password = factory.PostGenerationMethodCall('set_password', TEST_PASSWORD)
 
     @factory.sequence
+    def email(n):
+        return '{}@email.com'.format(n)
+
+    @factory.sequence
     def first_name(n):
-        return 'first_name_{:02d}'.format(n)
+        return 'first_name_{}'.format(n)
 
     @factory.sequence
     def username(n):
-        return 'user_{:02d}'.format(n)
+        return 'user_{}'.format(n)
