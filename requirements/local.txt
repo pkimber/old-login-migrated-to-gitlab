@@ -2,6 +2,7 @@
 -e .
 -e ../base
 beautifulsoup4
+devpi-client
 fabric
 factory-boy
 gitpython
