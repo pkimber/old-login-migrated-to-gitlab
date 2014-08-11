@@ -1,7 +1,8 @@
 # -*- encoding: utf-8 -*-
-
 from __future__ import unicode_literals
+
 from django.test import TestCase
+
 from login.management.commands.demo_data_login import Command
 
 
