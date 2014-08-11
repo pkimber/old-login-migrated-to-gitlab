@@ -28,7 +28,7 @@ setup(
             'templates/login/*.*',
         ],
     },
-    version='0.1.18',
+    version='0.1.19',
     description='User Login',
     author='Patrick Kimber',
     author_email='code@pkimber.net',
