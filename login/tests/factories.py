@@ -3,10 +3,23 @@ from __future__ import unicode_literals
 
 import factory
 
-from django.contrib.auth.models import User
+from django.contrib.auth.models import (
+    Group,
+    User,
+)
 
 
 TEST_PASSWORD = 'letmein'
+
+
+class GroupFactory(factory.django.DjangoModelFactory):
+
+    class Meta:
+        model = Group
+
+    @factory.sequence
+    def name(n):
+        return 'group_{}'.format(n)
 
 
 class UserFactory(factory.django.DjangoModelFactory):
