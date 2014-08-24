@@ -19,7 +19,7 @@ def get_readme():
 
 
 setup(
-    name='pkimber-login',
+    name='kb-login',
     packages=['login', 'login.tests', 'login.management', 'login.management.commands'],
     package_data={
         'login': [
@@ -28,7 +28,7 @@ setup(
             'templates/login/*.*',
         ],
     },
-    version='0.1.19',
+    version='0.1.20',
     description='User Login',
     author='Patrick Kimber',
     author_email='code@pkimber.net',
