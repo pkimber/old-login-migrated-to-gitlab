@@ -39,7 +39,7 @@ urlpatterns = patterns(
         ),
     url(r'^home/user/$',
         view=RedirectView.as_view(url=reverse_lazy('example.test')),
-        name='project.home.user'
+        name='project.dash'
         ),
     url(regex=r'^test/$',
         view=TestView.as_view(),
