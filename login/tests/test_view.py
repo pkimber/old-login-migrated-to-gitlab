@@ -13,9 +13,9 @@ from .factories import (
 class TestView(TestCase):
 
     def _login(self):
-        UserFactory(username='web')
+        user = UserFactory(username='web')
         self.assertTrue(
-            self.client.login(username='web', password=TEST_PASSWORD)
+            self.client.login(username=user.username, password=TEST_PASSWORD)
         )
 
     def test_login(self):
