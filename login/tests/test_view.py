@@ -13,7 +13,7 @@ from .factories import (
 class TestView(TestCase):
 
     def _login(self):
-        user = UserFactory(username='web')
+        UserFactory(username='web')
         self.assertTrue(
             self.client.login(username='web', password=TEST_PASSWORD)
         )
