@@ -1,6 +1,7 @@
 # -*- encoding: utf-8 -*-
 from __future__ import unicode_literals
 
+from django.conf import settings
 from django.conf.urls import (
     patterns,
     url,
@@ -19,6 +20,7 @@ urlpatterns = patterns(
     url(regex=r'^accounts/login/$',
         view='django.contrib.auth.views.login',
         kwargs={
+            'extra_context': {'testing': settings.TESTING},
             'template_name': 'project/login.html',
         },
         name='login'
@@ -26,6 +28,7 @@ urlpatterns = patterns(
     url(regex=r'^accounts/logout/$',
         view='django.contrib.auth.views.logout',
         kwargs={
+            'extra_context': {'testing': settings.TESTING},
             'next_page': reverse_lazy('project.home'),
             'template_name': 'login/logged_out.html',
         },
@@ -34,6 +37,7 @@ urlpatterns = patterns(
     url(regex=r'^accounts/password/change/$',
         view='django.contrib.auth.views.password_change',
         kwargs={
+            'extra_context': {'testing': settings.TESTING},
             'template_name': 'project/password_change.html',
         },
         name='password_change'
@@ -41,6 +45,7 @@ urlpatterns = patterns(
     url(regex=r'^accounts/password/change/done/$',
         view='django.contrib.auth.views.password_change_done',
         kwargs={
+            'extra_context': {'testing': settings.TESTING},
             'template_name': 'project/password_change_done.html',
         },
         name='password_change_done'
@@ -48,6 +53,7 @@ urlpatterns = patterns(
     url(regex=r'^accounts/password/reset/$',
         view=password_reset,
         kwargs={
+            'extra_context': {'testing': settings.TESTING},
             'template_name': 'project/password_reset.html'
         },
         name='password_reset'
@@ -58,6 +64,7 @@ urlpatterns = patterns(
     url(regex=r'^accounts/password/reset/complete/$',
         view=password_reset_complete,
         kwargs={
+            'extra_context': {'testing': settings.TESTING},
             'template_name': 'project/password_reset_complete.html'
         },
         name='password_reset_complete'
@@ -65,6 +72,7 @@ urlpatterns = patterns(
     url(regex=r'^accounts/password/reset/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
         view=password_reset_confirm,
         kwargs={
+            'extra_context': {'testing': settings.TESTING},
             'template_name': 'project/password_reset_confirm.html',
         },
         name='password_reset_confirm'
@@ -72,6 +80,7 @@ urlpatterns = patterns(
     url(regex=r'^accounts/password/reset/done/$',
         view=password_reset_done,
         kwargs={
+            'extra_context': {'testing': settings.TESTING},
             'template_name': 'project/password_reset_done.html'
         },
         name='password_reset_done'
