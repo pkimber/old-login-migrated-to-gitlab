@@ -1,7 +1,7 @@
 # -*- encoding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 
 from login.tests.model_maker import (
     make_superuser,
@@ -13,23 +13,23 @@ STAFF = 'staff'
 
 
 def get_user_fred():
-    return User.objects.get(username='fred')
+    return get_user_model().objects.get(username='fred')
 
 
 def get_user_mike():
-    return User.objects.get(username='mike')
+    return get_user_model().objects.get(username='mike')
 
 
 def get_user_sara():
-    return User.objects.get(username='sara')
+    return get_user_model().objects.get(username='sara')
 
 
 def get_user_staff():
-    return User.objects.get(username=STAFF)
+    return get_user_model().objects.get(username=STAFF)
 
 
 def get_user_web():
-    return User.objects.get(username='web')
+    return get_user_model().objects.get(username='web')
 
 
 def default_scenario_login():
