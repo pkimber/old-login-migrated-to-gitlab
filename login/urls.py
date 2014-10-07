@@ -20,7 +20,9 @@ urlpatterns = patterns(
     url(regex=r'^accounts/login/$',
         view='django.contrib.auth.views.login',
         kwargs={
-            'extra_context': {'testing': settings.TESTING},
+            'extra_context': {
+                'testing': settings.TESTING, 'path': '/accounts/login/'
+            },
             'template_name': 'project/login.html',
         },
         name='login'
