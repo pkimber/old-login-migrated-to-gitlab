@@ -33,6 +33,19 @@ class UserFactory(factory.django.DjangoModelFactory):
 
       UserFactory(username='staff', is_staff=True, is_superuser=True)
 
+    To create a member of staff and log them in (in a test)::
+
+      user = UserFactory(username='staff', is_staff=True)
+      self.assertTrue(
+          self.client.login(username=user.username, password=TEST_PASSWORD)
+      )
+
+    To set-up users for the 'base.tests.test_utils.PermTestCase' class::
+
+      class TestViewPerm(PermTestCase):
+          def setUp(self):
+              self.setup_users()
+
     """
 
     class Meta:
