@@ -13,5 +13,4 @@ pytest-django
 pytest-flakes
 pytest-pep8
 pyyaml
-south
 walkdir
