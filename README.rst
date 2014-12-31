@@ -42,4 +42,4 @@ You can log in with user ``staff``, password ``staff``...
 Release
 =======
 
-https://django-dev-and-deploy-using-salt.readthedocs.org/
+https://www.pkimber.net/open/
