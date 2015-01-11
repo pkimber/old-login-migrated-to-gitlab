@@ -1,4 +1,3 @@
-recursive-include login/static *
 recursive-include login/templates *
 
 include LICENSE
