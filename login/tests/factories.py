@@ -1,12 +1,14 @@
 # -*- encoding: utf-8 -*-
-from __future__ import unicode_literals
-
 import factory
+
+from datetime import date
 
 from django.contrib.auth.models import (
     Group,
     User,
 )
+
+from login.models import PasswordResetAudit
 
 
 TEST_PASSWORD = 'letmein'
@@ -20,6 +22,19 @@ class GroupFactory(factory.django.DjangoModelFactory):
     @factory.sequence
     def name(n):
         return 'group_{}'.format(n)
+
+
+class PasswordResetAuditFactory(factory.django.DjangoModelFactory):
+
+    request_date = date.today()
+    count = 1
+
+    class Meta:
+        model = PasswordResetAudit
+
+    @factory.sequence
+    def email(n):
+        return '{}@email.com'.format(n)
 
 
 class UserFactory(factory.django.DjangoModelFactory):

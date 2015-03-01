@@ -1,6 +1,4 @@
 # -*- encoding: utf-8 -*-
-from __future__ import unicode_literals
-
 from django.conf.urls import (
     include,
     patterns,
@@ -40,6 +38,10 @@ urlpatterns = patterns(
     url(r'^home/user/$',
         view=RedirectView.as_view(url=reverse_lazy('example.test')),
         name='project.dash'
+        ),
+    url(r'^home/user/$',
+        view=RedirectView.as_view(url=reverse_lazy('example.test')),
+        name='project.settings'
         ),
     url(regex=r'^test/$',
         view=TestView.as_view(),

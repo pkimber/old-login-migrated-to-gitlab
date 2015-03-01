@@ -1,6 +1,4 @@
 # -*- encoding: utf-8 -*-
-from __future__ import unicode_literals
-
 """
 Django settings for login project.
 """
@@ -14,6 +12,10 @@ SESSION_COOKIE_SECURE = False
 CSRF_COOKIE_SECURE = False
 
 TEMPLATE_STRING_IF_INVALID = '**** INVALID EXPRESSION: %s ****'
+
+# We use the 'SITE_NAME' for the name of the database and the name of the
+# cloud files container.
+SITE_NAME = 'app_login'
 
 ADMINS = (
     ('admin', 'code@pkimber.net'),
@@ -89,7 +91,7 @@ MIDDLEWARE_CLASSES = (
     'reversion.middleware.RevisionMiddleware',
 )
 
-ROOT_URLCONF = 'example.urls'
+ROOT_URLCONF = 'example_login.urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'example.wsgi.application'
@@ -107,11 +109,13 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'compressor',
-    'login',
     'django.contrib.admin',
+    'compressor',
+    'reversion',
     'base',
-    'example',
+    'example_login',
+    'login',
+    'mail',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -143,8 +147,24 @@ LOGGING = {
     }
 }
 
+# Celery
+BROKER_URL = 'redis://localhost:6379/0'
+CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
+# https://kfalck.net/2013/02/21/run-multiple-celeries-on-a-single-redis
+CELERY_DEFAULT_QUEUE = '{}'.format(SITE_NAME)
+# http://celery.readthedocs.org/en/latest/userguide/tasks.html#disable-rate-limits-if-they-re-not-used
+CELERY_DISABLE_RATE_LIMITS = True
+
 # django-compressor
 COMPRESS_ENABLED = False # defaults to the opposite of DEBUG
+
+# See the list of constants at the top of 'mail.models'
+MAIL_TEMPLATE_TYPE = 'django'
+DEFAULT_FROM_EMAIL = 'notify@pkimber.net'
+# mandrill
+#EMAIL_BACKEND = 'djrill.mail.backends.djrill.DjrillBackend'
+#MANDRILL_API_KEY = get_env_variable('MANDRILL_API_KEY')
+#MANDRILL_USER_NAME = get_env_variable('MANDRILL_USER_NAME')
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 

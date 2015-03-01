@@ -33,20 +33,21 @@
         {% endif %}
         {% if user.is_staff %}
           <p>You are a member of staff</p>
+          <p>
+            <a href="{% url 'password_reset_audit_report' %}">Password Reset Audit Report</a>
+          </p>
           <table class="pure-table pure-table-bordered">
             <thead>
               <tr>
-                <th>Name</th>
-                <th>Last login</th>
                 <th>User name</th>
                 <th>Password</th>
+                <th>Name</th>
+                <th>Last login</th>
               </tr>
             </thead>
             <tbody>
               {% for u in users %}
                 <tr>
-                  <td>{{ u.first_name }} {{ u.last_name }}</td>
-                  <td>{{ u.last_login }}</td>
                   {% if u == request_user %}
                     <td></td>
                     <td></td>
@@ -64,6 +65,8 @@
                       </a>
                     </td>
                   {% endif %}
+                  <td>{{ u.first_name }} {{ u.last_name }}</td>
+                  <td>{{ u.last_login }}</td>
                 </tr>
               {% endfor %}
             </tbody>

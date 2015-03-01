@@ -12,7 +12,8 @@ from django.contrib.auth.views import (
 )
 from django.core.urlresolvers import reverse_lazy
 
-from login.forms import PasswordResetNotifyForm
+from .forms import PasswordResetNotifyForm
+from .views import PasswordResetAuditListView
 
 
 urlpatterns = patterns(
@@ -87,5 +88,9 @@ urlpatterns = patterns(
             'template_name': 'project/password_reset_done.html'
         },
         name='password_reset_done'
+        ),
+    url(regex=r'^accounts/password/reset/audit/report/$',
+        view=PasswordResetAuditListView.as_view(),
+        name='password_reset_audit_report'
         ),
 )
