@@ -1,12 +1,17 @@
 # -*- encoding: utf-8 -*-
-from __future__ import unicode_literals
-
 from django import forms
+from django.contrib.auth.forms import PasswordResetForm
 from django.contrib.auth.models import User
 
 from base.form_utils import RequiredFieldForm
 
 from .models import username_validator
+
+
+class PasswordResetNotifyForm(PasswordResetForm):
+
+    pass
+
 
 
 class UserCreationForm(RequiredFieldForm):

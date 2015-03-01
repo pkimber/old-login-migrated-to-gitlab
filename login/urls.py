@@ -1,6 +1,4 @@
 # -*- encoding: utf-8 -*-
-from __future__ import unicode_literals
-
 from django.conf import settings
 from django.conf.urls import (
     patterns,
@@ -13,6 +11,8 @@ from django.contrib.auth.views import (
     password_reset_done,
 )
 from django.core.urlresolvers import reverse_lazy
+
+from login.forms import PasswordResetNotifyForm
 
 
 urlpatterns = patterns(
@@ -56,6 +56,7 @@ urlpatterns = patterns(
         view=password_reset,
         kwargs={
             'extra_context': {'testing': settings.TESTING},
+            'password_reset_form': PasswordResetNotifyForm,
             'template_name': 'project/password_reset.html'
         },
         name='password_reset'
