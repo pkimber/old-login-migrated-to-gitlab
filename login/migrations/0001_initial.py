@@ -13,7 +13,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='PasswordResetAudit',
             fields=[
-                ('id', models.AutoField(verbose_name='ID', auto_created=True, primary_key=True, serialize=False)),
+                ('id', models.AutoField(serialize=False, auto_created=True, verbose_name='ID', primary_key=True)),
                 ('created', models.DateTimeField(auto_now_add=True)),
                 ('modified', models.DateTimeField(auto_now=True)),
                 ('email', models.EmailField(max_length=75)),
@@ -22,6 +22,7 @@ class Migration(migrations.Migration):
             ],
             options={
                 'verbose_name_plural': 'Password reset audit',
+                'ordering': ['-modified'],
                 'verbose_name': 'Password reset audit',
             },
             bases=(models.Model,),
