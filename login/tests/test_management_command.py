@@ -1,17 +1,11 @@
 # -*- encoding: utf-8 -*-
-from __future__ import unicode_literals
-
 from django.test import TestCase
 
-from login.management.commands.demo_data_login import Command
+from login.management.commands import demo_data_login
 
 
 class TestCommand(TestCase):
 
-    def test_command(self):
-        """
-        Test the management command - make sure the database structure is still
-        correct.
-        """
-        command = Command()
+    def test_command_demo_data_login(self):
+        command = demo_data_login.Command()
         command.handle()

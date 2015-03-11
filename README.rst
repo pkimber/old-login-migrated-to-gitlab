@@ -16,6 +16,9 @@ Virtual Environment
   wget https://raw.githubusercontent.com/pypa/pip/master/contrib/get-pip.py
   python get-pip.py
 
+  deactivate
+  source venv-login/bin/activate
+
   pip install -r requirements/local.txt
 
 Testing
@@ -33,11 +36,13 @@ Usage
 
   py.test -x && \
       touch temp.db && rm temp.db && \
-      django-admin.py syncdb --noinput && \
+      django-admin.py migrate --noinput && \
       django-admin.py demo_data_login && \
       django-admin.py runserver
 
 You can log in with user ``staff``, password ``staff``...
+
+To test the password reset, use web@pkimber.net
 
 Release
 =======

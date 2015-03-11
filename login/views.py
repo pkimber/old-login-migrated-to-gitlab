@@ -1,6 +1,4 @@
 # -*- encoding: utf-8 -*-
-from __future__ import unicode_literals
-
 from django.conf import settings
 from django.contrib.auth import (
     authenticate,
@@ -13,6 +11,7 @@ from django.contrib.auth.forms import (
 from django.contrib.auth.models import User
 from django.views.generic import (
     CreateView,
+    ListView,
     UpdateView,
 )
 
@@ -25,6 +24,14 @@ from braces.views import (
 from base.view_utils import BaseMixin
 
 from .forms import UserNameForm
+from .models import PasswordResetAudit
+
+
+class PasswordResetAuditListView(
+        LoginRequiredMixin, StaffuserRequiredMixin, BaseMixin, ListView):
+
+    model = PasswordResetAudit
+    paginate_by = 20
 
 
 class RegisterCreateView(AnonymousRequiredMixin, BaseMixin, CreateView):

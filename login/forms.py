@@ -1,12 +1,65 @@
 # -*- encoding: utf-8 -*-
-from __future__ import unicode_literals
+import logging
 
 from django import forms
+from django.conf import settings
+from django.contrib.auth import get_user_model
+from django.contrib.auth.forms import PasswordResetForm
 from django.contrib.auth.models import User
 
 from base.form_utils import RequiredFieldForm
+from mail.models import Notify
+from mail.service import queue_mail_message
+from mail.tasks import process_mail
 
-from .models import username_validator
+from .models import (
+    PasswordResetAudit,
+    username_validator,
+)
+
+
+logger = logging.getLogger(__name__)
+
+
+class PasswordResetNotifyForm(PasswordResetForm):
+
+    def save(self, **kwargs):
+        result = super(PasswordResetNotifyForm, self).save(**kwargs)
+        email = self.cleaned_data["email"]
+        body = ['email address: {}'.format(email)]
+        active_users = get_user_model().objects.filter(email__iexact=email)
+        if active_users:
+            for user in active_users:
+                if user.is_active and user.has_usable_password():
+                    body.append(
+                        "Password reset email sent.  "
+                        "(user is active and has a usable password)."
+                    )
+                else:
+                    body.append("Password reset email has NOT been sent.  ")
+                    if not user.is_active:
+                        body.append("(user is NOT active).")
+                    if not user.has_usable_password():
+                        body.append("(user does NOT have a usable password).")
+        else:
+            body.append(
+                "There are no users on the system with this email address."
+            )
+        email_addresses = [n.email for n in Notify.objects.all()]
+        if email_addresses:
+            queue_mail_message(
+                PasswordResetAudit.objects.audit(email),
+                email_addresses,
+                "Password reset request from {}".format(email),
+                body,
+            )
+            process_mail.delay()
+        else:
+            logging.error(
+                "Cannot send email notification of password request.  "
+                "No email addresses set-up in 'mail.models.Notify'"
+            )
+        return result
 
 
 class UserCreationForm(RequiredFieldForm):
