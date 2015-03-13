@@ -30,17 +30,18 @@ class PasswordResetNotifyForm(PasswordResetForm):
         active_users = get_user_model().objects.filter(email__iexact=email)
         if active_users:
             for user in active_users:
+                body.append("  User name: {}".format(user.username))
                 if user.is_active and user.has_usable_password():
                     body.append(
-                        "Password reset email sent.  "
+                        "  - Password reset email sent.  "
                         "(user is active and has a usable password)."
                     )
                 else:
-                    body.append("Password reset email has NOT been sent.  ")
+                    body.append("  - Password reset email has NOT been sent.  ")
                     if not user.is_active:
-                        body.append("(user is NOT active).")
+                        body.append("  - (user is NOT active).")
                     if not user.has_usable_password():
-                        body.append("(user does NOT have a usable password).")
+                        body.append("  - (user does NOT have a usable password).")
         else:
             body.append(
                 "There are no users on the system with this email address."
@@ -51,7 +52,7 @@ class PasswordResetNotifyForm(PasswordResetForm):
                 PasswordResetAudit.objects.audit(email),
                 email_addresses,
                 "Password reset request from {}".format(email),
-                body,
+                '\n'.join(body),
             )
             process_mail.delay()
         else:
