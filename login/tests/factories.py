@@ -61,6 +61,12 @@ class UserFactory(factory.django.DjangoModelFactory):
           def setUp(self):
               self.setup_users()
 
+    Imports
+
+      from login.tests.factories import (
+          TEST_PASSWORD,
+          UserFactory,
+      )
     """
 
     class Meta:
