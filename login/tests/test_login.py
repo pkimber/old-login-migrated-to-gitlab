@@ -31,7 +31,7 @@ class TestLogin(TestCase):
         self.assertEqual(302, response.status_code)
         # check the user was logged in
         self.assertIn(SESSION_KEY, self.client.session)
-        self.assertEquals(user_pk, self.client.session[SESSION_KEY])
+        self.assertEquals(user_pk, int(self.client.session[SESSION_KEY]))
 
     def test_login_next(self):
         """ Check that login with a 'next' parameter is working correctly """
@@ -49,7 +49,7 @@ class TestLogin(TestCase):
         self.assertRedirects(response, reverse('example.test'))
         # check the user was logged in
         self.assertIn(SESSION_KEY, self.client.session)
-        self.assertEquals(user_pk, self.client.session[SESSION_KEY])
+        self.assertEquals(user_pk, int(self.client.session[SESSION_KEY]))
 
     def test_logout(self):
         user_pk = make_user('patrick').pk
@@ -59,7 +59,7 @@ class TestLogin(TestCase):
         self.client.login(username='patrick', password=TEST_PASSWORD)
         # check the user was logged in
         self.assertIn(SESSION_KEY, self.client.session)
-        self.assertEquals(user_pk, self.client.session[SESSION_KEY])
+        self.assertEquals(user_pk, int(self.client.session[SESSION_KEY]))
         # logout the user
         url = reverse('logout')
         response = self.client.post(url)
