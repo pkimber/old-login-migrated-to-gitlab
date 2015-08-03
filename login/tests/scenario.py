@@ -40,10 +40,18 @@ def default_scenario_login():
     super_user = make_superuser('admin')
     super_user.email = 'admin@pkimber.net'
     super_user.save()
-    make_user(STAFF, email='staff@pkimber.net', is_staff=True)
     make_user(
-        'web', email='web@pkimber.net',
-        first_name='William', last_name='Webber'
+        STAFF,
+        email='staff@pkimber.net',
+        first_name='Stan',
+        last_name='Stafford',
+        is_staff=True
+    )
+    make_user(
+        'web',
+        email='web@pkimber.net',
+        first_name='William',
+        last_name='Webber'
     )
     NotifyFactory()
 
