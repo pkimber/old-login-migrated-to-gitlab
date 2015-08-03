@@ -23,12 +23,11 @@ setup(
     packages=['login', 'login.migrations', 'login.tests', 'login.management', 'login.management.commands'],
     package_data={
         'login': [
-            'static/*.*',
             'templates/*.*',
             'templates/login/*.*',
         ],
     },
-    version='0.1.33',
+    version='0.1.34',
     description='User Login',
     author='Patrick Kimber',
     author_email='code@pkimber.net',
@@ -42,6 +41,7 @@ setup(
         'Operating System :: OS Independent',
         'Programming Language :: Python',
         'Programming Language :: Python :: 3',
+        'Framework :: Django :: 1.8',
         'Topic :: Office/Business :: Scheduling',
     ],
     long_description=get_readme(),
