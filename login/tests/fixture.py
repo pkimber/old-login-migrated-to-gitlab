@@ -16,7 +16,8 @@ class PermTest:
     def anon(self, url):
         self.client.logout()
         response = self.client.get(url)
-        assert 200 == response.status_code
+        message = "'url should be public '{}'".format(url)
+        assert 200 == response.status_code, message
 
     def staff(self, url):
         # check anon user cannot login
