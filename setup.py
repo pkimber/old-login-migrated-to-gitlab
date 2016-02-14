@@ -20,17 +20,17 @@ def get_readme():
 
 setup(
     name='kb-login',
-    packages=['login', 'login.management', 'login.management.commands', 'login.migrations', 'login.tests'],
+    packages=['login', 'login.migrations', 'login.tests', 'login.management', 'login.management.commands'],
     package_data={
         'login': [
             'templates/*.*',
             'templates/login/*.*',
         ],
     },
-    version='0.1.37',
+    version='0.1.38',
     description='User Login',
-    author='Malcolm Dinsmore',
-    author_email='m.dinsmore@talk21.com',
+    author='Patrick Kimber',
+    author_email='code@pkimber.net',
     url='git@github.com:pkimber/login.git',
     classifiers=[
         'Development Status :: 1 - Planning',
