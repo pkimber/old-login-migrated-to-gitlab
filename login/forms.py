@@ -24,7 +24,7 @@ logger = logging.getLogger(__name__)
 class PasswordResetNotifyForm(PasswordResetForm):
 
     def save(self, **kwargs):
-        result = super(PasswordResetNotifyForm, self).save(**kwargs)
+        result = super().save(**kwargs)
         email = self.cleaned_data["email"]
         body = ['email address: {}'.format(email)]
         active_users = get_user_model().objects.filter(email__iexact=email)

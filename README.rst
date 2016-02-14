@@ -11,13 +11,9 @@ Virtual Environment
 
 ::
 
-  pyvenv-3.4 --without-pip venv-login
+  virtualenv --python=python3.4 venv-login
   source venv-login/bin/activate
-  wget https://raw.githubusercontent.com/pypa/pip/master/contrib/get-pip.py
-  python get-pip.py
-
-  deactivate
-  source venv-login/bin/activate
+  pip install --upgrade pip
 
   pip install -r requirements/local.txt
 

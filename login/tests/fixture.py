@@ -43,6 +43,15 @@ def perm_check(client):
     py.test: Pass a parameter to a fixture function
     http://stackoverflow.com/questions/18011902/py-test-pass-a-parameter-to-a-fixture-function
 
+    To use this fixture::
+
+      from login.tests.fixture import perm_check
+
+      @pytest.mark.django_db
+      def test_list(perm_check):
+          url = reverse('enquiry.list')
+          perm_check.staff(url)
+
     """
     return PermTest(client)
 

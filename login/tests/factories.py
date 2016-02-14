@@ -40,9 +40,16 @@ class PasswordResetAuditFactory(factory.django.DjangoModelFactory):
 class UserFactory(factory.django.DjangoModelFactory):
     """Password is always set to TEST_PASSWORD (see above).
 
+    import::
+
+      from login.tests.factories import (
+          TEST_PASSWORD,
+          UserFactory,
+      )
+
     To create a simple user::
 
-        UserFactory(username='web')
+      UserFactory(username='web')
 
     To create a superuser with the name 'staff'::
 
@@ -50,10 +57,8 @@ class UserFactory(factory.django.DjangoModelFactory):
 
     To create a member of staff and log them in (in a test)::
 
-      user = UserFactory(username='staff', is_staff=True)
-      self.assertTrue(
-          self.client.login(username=user.username, password=TEST_PASSWORD)
-      )
+      u = UserFactory()
+      assert client.login(username=u.username, password=TEST_PASSWORD) is True
 
     To set-up users for the 'base.tests.test_utils.PermTestCase' class::
 
@@ -61,12 +66,6 @@ class UserFactory(factory.django.DjangoModelFactory):
           def setUp(self):
               self.setup_users()
 
-    Imports
-
-      from login.tests.factories import (
-          TEST_PASSWORD,
-          UserFactory,
-      )
     """
 
     class Meta:
