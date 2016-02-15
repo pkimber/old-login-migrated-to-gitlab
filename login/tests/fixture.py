@@ -24,11 +24,11 @@ class PermTest:
         self.client.logout()
         response = self.client.get(url)
         assert 302 == response.status_code
-        assert 'accounts/login' in response['Location']
+        assert '/login' in response['Location']
         # check web user cannot login
         assert self.client.login(username='web', password=TEST_PASSWORD)
         assert 302 == response.status_code
-        assert 'accounts/login' in response['Location']
+        assert '/login' in response['Location']
         # check staff user can login
         assert self.client.login(username='staff', password=TEST_PASSWORD)
         response = self.client.get(url)
