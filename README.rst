@@ -43,4 +43,4 @@ To test the password reset, use web@pkimber.net
 Release
 =======
 
-https://www.pkimber.net/open/
+https://www.kbsoftware.co.uk/docs/
