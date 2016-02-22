@@ -57,7 +57,7 @@ class UserFactory(factory.django.DjangoModelFactory):
 
     To create a member of staff and log them in (in a test)::
 
-      u = UserFactory()
+      u = UserFactory(is_staff=True)
       assert client.login(username=u.username, password=TEST_PASSWORD) is True
 
     To set-up users for the 'base.tests.test_utils.PermTestCase' class::
