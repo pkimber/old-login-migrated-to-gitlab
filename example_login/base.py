@@ -91,7 +91,7 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'example_login.urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.
-WSGI_APPLICATION = 'example.wsgi.application'
+WSGI_APPLICATION = 'example_login.wsgi.application'
 
 TEMPLATES = [
     {

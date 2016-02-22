@@ -36,7 +36,7 @@ Usage
       django-admin.py demo_data_login && \
       django-admin.py runserver
 
-You can log in with user ``staff``, password ``staff``...
+You can log in with user ``staff``, password ``letmein``...
 
 To test the password reset, use web@pkimber.net
 
