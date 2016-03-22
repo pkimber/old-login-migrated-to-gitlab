@@ -27,10 +27,10 @@ setup(
             'templates/login/*.*',
         ],
     },
-    version='0.1.41',
+    version='0.1.42',
     description='User Login',
     author='Malcolm Dinsmore',
-    author_email='m.dinsmore@talk21.com',
+    author_email='zebyea@gmail.com',
     url='git@github.com:pkimber/login.git',
     classifiers=[
         'Development Status :: 1 - Planning',
