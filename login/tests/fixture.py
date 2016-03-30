@@ -13,6 +13,36 @@ class PermTest:
         setup_users()
         self.client = client
 
+    def _no_login_anon(self, url):
+        """Check anon user cannot login."""
+        self.client.logout()
+        response = self.client.get(url)
+        assert 302 == response.status_code
+        assert '/login' in response['Location']
+
+    def _no_login_staff(self, url):
+        """Check staff user cannot login."""
+        assert self.client.login(username='staff', password=TEST_PASSWORD)
+        response = self.client.get(url)
+        assert 302 == response.status_code
+        assert '/login' in response['Location']
+
+    def _no_login_web(self, url):
+        """Check web user cannot login."""
+        assert self.client.login(username='web', password=TEST_PASSWORD)
+        response = self.client.get(url)
+        assert 302 == response.status_code
+        assert '/login' in response['Location']
+
+    def admin(self, url):
+        self._no_login_anon(url)
+        self._no_login_web(url)
+        self._no_login_staff(url)
+        # check staff user can login
+        assert self.client.login(username='admin', password=TEST_PASSWORD)
+        response = self.client.get(url)
+        assert 200 == response.status_code
+
     def anon(self, url):
         self.client.logout()
         response = self.client.get(url)
@@ -37,15 +67,8 @@ class PermTest:
         assert 200 == response.status_code
 
     def staff(self, url):
-        # check anon user cannot login
-        self.client.logout()
-        response = self.client.get(url)
-        assert 302 == response.status_code
-        assert '/login' in response['Location']
-        # check web user cannot login
-        assert self.client.login(username='web', password=TEST_PASSWORD)
-        assert 302 == response.status_code
-        assert '/login' in response['Location']
+        self._no_login_anon(url)
+        self._no_login_web(url)
         # check staff user can login
         assert self.client.login(username='staff', password=TEST_PASSWORD)
         response = self.client.get(url)
