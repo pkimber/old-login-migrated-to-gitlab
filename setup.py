@@ -27,7 +27,7 @@ setup(
             'templates/login/*.*',
         ],
     },
-    version='0.1.42',
+    version='0.1.43',
     description='User Login',
     author='Malcolm Dinsmore',
     author_email='zebyea@gmail.com',
