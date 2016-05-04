@@ -49,7 +49,9 @@ class PermTest:
         message = "'url should be public '{}'".format(url)
         assert 200 == response.status_code, message
 
-    def auth(self, url):
+    def auth(self, url, expect=None):
+        if not expect:
+            expect = 200
         # check a user who 'is_authenticated' can login
         self.client.logout()
         response = self.client.get(url)
@@ -59,12 +61,12 @@ class PermTest:
         self.client.logout()
         assert self.client.login(username='web', password=TEST_PASSWORD)
         response = self.client.get(url)
-        assert 200 == response.status_code, response['Location']
+        assert expect == response.status_code, response['Location']
         # check staff user can login
         self.client.logout()
         assert self.client.login(username='staff', password=TEST_PASSWORD)
         response = self.client.get(url)
-        assert 200 == response.status_code
+        assert expect == response.status_code
 
     def staff(self, url):
         self._no_login_anon(url)

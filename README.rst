@@ -11,9 +11,8 @@ Virtual Environment
 
 ::
 
-  virtualenv --python=python3.4 venv-login
+  virtualenv --python=python3 venv-login
   source venv-login/bin/activate
-  pip install --upgrade pip
 
   pip install -r requirements/local.txt
 
