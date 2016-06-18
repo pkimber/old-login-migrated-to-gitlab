@@ -49,7 +49,15 @@ class PermTest:
         message = "'url should be public '{}'".format(url)
         assert 200 == response.status_code, message
 
-    def auth(self, url, expect=None):
+    def auth(self, url, expect=None, expect_location=None):
+        """Check a user who is logged in has access to the view.
+
+        Keyword arguments:
+        expect -- can be used when the expected status code is not 200.
+        expect_location -- can be used where the expected status code is 302
+        and we want to verify the redirect.
+
+        """
         if not expect:
             expect = 200
         # check a user who 'is_authenticated' can login
@@ -67,6 +75,8 @@ class PermTest:
         assert self.client.login(username='staff', password=TEST_PASSWORD)
         response = self.client.get(url)
         assert expect == response.status_code
+        if expect_location:
+            assert expect_location == response['Location']
 
     def staff(self, url):
         self._no_login_anon(url)
