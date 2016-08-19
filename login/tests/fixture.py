@@ -31,8 +31,9 @@ class PermTest:
         """Check web user cannot login."""
         assert self.client.login(username='web', password=TEST_PASSWORD)
         response = self.client.get(url)
-        assert 302 == response.status_code
-        assert '/login' in response['Location']
+        assert response.status_code in [302, 403]
+        if response.status_code == 302:
+            assert '/login' in response['Location']
 
     def admin(self, url):
         self._no_login_anon(url)
