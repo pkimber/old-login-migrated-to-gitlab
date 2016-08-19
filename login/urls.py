@@ -1,10 +1,11 @@
 # -*- encoding: utf-8 -*-
 from django.conf import settings
-from django.conf.urls import (
-    patterns,
-    url,
-)
+from django.conf.urls import url
 from django.contrib.auth.views import (
+    login,
+    logout,
+    password_change,
+    password_change_done,
     password_reset,
     password_reset_complete,
     password_reset_confirm,
@@ -16,10 +17,9 @@ from .forms import PasswordResetNotifyForm
 from .views import PasswordResetAuditListView
 
 
-urlpatterns = patterns(
-    '',
+urlpatterns = [
     url(regex=r'^accounts/login/$',
-        view='django.contrib.auth.views.login',
+        view=login,
         kwargs={
             'extra_context': {
                 'testing': settings.TESTING, 'path': '/accounts/login/'
@@ -29,7 +29,7 @@ urlpatterns = patterns(
         name='login'
         ),
     url(regex=r'^accounts/logout/$',
-        view='django.contrib.auth.views.logout',
+        view=logout,
         kwargs={
             'extra_context': {'testing': settings.TESTING},
             'next_page': reverse_lazy('project.home'),
@@ -38,7 +38,7 @@ urlpatterns = patterns(
         name='logout'
         ),
     url(regex=r'^accounts/password/change/$',
-        view='django.contrib.auth.views.password_change',
+        view=password_change,
         kwargs={
             'extra_context': {'testing': settings.TESTING},
             'template_name': 'project/password_change.html',
@@ -46,7 +46,7 @@ urlpatterns = patterns(
         name='password_change'
         ),
     url(regex=r'^accounts/password/change/done/$',
-        view='django.contrib.auth.views.password_change_done',
+        view=password_change_done,
         kwargs={
             'extra_context': {'testing': settings.TESTING},
             'template_name': 'project/password_change_done.html',
@@ -93,4 +93,4 @@ urlpatterns = patterns(
         view=PasswordResetAuditListView.as_view(),
         name='password_reset_audit_report'
         ),
-)
+]
