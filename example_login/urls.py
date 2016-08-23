@@ -1,15 +1,8 @@
 # -*- encoding: utf-8 -*-
-from django.conf.urls import (
-    include,
-    patterns,
-    url,
-)
+from django.conf.urls import include, url
 from django.contrib import admin
 from django.core.urlresolvers import reverse_lazy
-from django.views.generic import (
-    RedirectView,
-    TemplateView,
-)
+from django.views.generic import RedirectView, TemplateView
 
 from login.views import RegisterCreateView
 
@@ -23,8 +16,7 @@ from .views import (
 admin.autodiscover()
 
 
-urlpatterns = patterns(
-    '',
+urlpatterns = [
     url(regex=r'^admin/',
         view=include(admin.site.urls)
         ),
@@ -59,4 +51,4 @@ urlpatterns = patterns(
         view=MyUpdateUserPasswordView.as_view(),
         name='update_user_password',
         ),
-)
+]

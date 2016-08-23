@@ -17,8 +17,9 @@ class PermTest:
         """Check anon user cannot login."""
         self.client.logout()
         response = self.client.get(url)
-        assert 302 == response.status_code
-        assert '/login' in response['Location']
+        assert response.status_code in [302, 401]
+        if response.status_code == 302:
+            assert '/login' in response['Location']
 
     def _no_login_staff(self, url):
         """Check staff user cannot login."""
@@ -31,7 +32,7 @@ class PermTest:
         """Check web user cannot login."""
         assert self.client.login(username='web', password=TEST_PASSWORD)
         response = self.client.get(url)
-        assert response.status_code in [302, 403]
+        assert response.status_code in [302, 401, 403]
         if response.status_code == 302:
             assert '/login' in response['Location']
 
@@ -85,7 +86,7 @@ class PermTest:
         # check staff user can login
         assert self.client.login(username='staff', password=TEST_PASSWORD)
         response = self.client.get(url)
-        assert 200 == response.status_code
+        assert 200 == response.status_code, response
 
 
 @pytest.fixture
