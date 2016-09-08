@@ -2,11 +2,7 @@
 import factory
 
 from datetime import date
-
-from django.contrib.auth.models import (
-    Group,
-    User,
-)
+from django.contrib.auth.models import Group, User
 
 from login.models import PasswordResetAudit
 
