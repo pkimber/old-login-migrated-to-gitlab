@@ -71,7 +71,13 @@ class PermTest:
         self.client.logout()
         assert self.client.login(username='web', password=TEST_PASSWORD)
         response = self.client.get(url)
-        assert expect == response.status_code, response['Location']
+        message = "Expecting status code '{}', got '{}' for {}: {}".format(
+            expect,
+            response.status_code,
+            url,
+            response.get('Location', ''),
+        )
+        assert expect == response.status_code, message
         # check staff user can login
         self.client.logout()
         assert self.client.login(username='staff', password=TEST_PASSWORD)
