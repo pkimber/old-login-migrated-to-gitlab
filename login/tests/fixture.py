@@ -32,7 +32,7 @@ class PermTest:
         """Check web user cannot login."""
         assert self.client.login(username='web', password=TEST_PASSWORD)
         response = self.client.get(url)
-        assert response.status_code in [302, 401, 403]
+        assert response.status_code in [302, 401, 403], response.status_code
         if response.status_code == 302:
             assert '/login' in response['Location']
 
@@ -65,7 +65,7 @@ class PermTest:
         # check a user who 'is_authenticated' can login
         self.client.logout()
         response = self.client.get(url)
-        assert 302 == response.status_code
+        assert 302 == response.status_code, response.status_code
         assert '/login' in response['Location']
         # check web user can login
         self.client.logout()
