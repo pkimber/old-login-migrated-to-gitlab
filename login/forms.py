@@ -22,6 +22,10 @@ logger = logging.getLogger(__name__)
 
 class PasswordResetNotifyForm(PasswordResetForm):
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['email'].widget.attrs.update({'class': 'pure-input-2-3'})
+
     def save(self, **kwargs):
         result = super().save(**kwargs)
         email = self.cleaned_data["email"]
