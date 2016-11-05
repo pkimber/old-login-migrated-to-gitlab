@@ -5,6 +5,7 @@ from django import forms
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import PasswordResetForm
 from django.contrib.auth.models import User
+from django.db import transaction
 
 from base.form_utils import RequiredFieldForm
 from mail.models import Notify
@@ -57,7 +58,7 @@ class PasswordResetNotifyForm(PasswordResetForm):
                 "Password reset request from {}".format(email),
                 '\n'.join(body),
             )
-            process_mail.delay()
+            transaction.on_commit(lambda: process_mail.delay())
         else:
             logging.error(
                 "Cannot send email notification of password request.  "
