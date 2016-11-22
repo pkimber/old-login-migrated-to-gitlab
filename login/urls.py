@@ -24,7 +24,7 @@ urlpatterns = [
             'extra_context': {
                 'testing': settings.TESTING, 'path': '/accounts/login/'
             },
-            'template_name': 'project/login.html',
+            'template_name': 'login/login.html',
         },
         name='login'
         ),
