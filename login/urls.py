@@ -41,7 +41,7 @@ urlpatterns = [
         view=password_change,
         kwargs={
             'extra_context': {'testing': settings.TESTING},
-            'template_name': 'project/password_change.html',
+            'template_name': 'login/password_change.html',
         },
         name='password_change'
         ),
@@ -49,7 +49,7 @@ urlpatterns = [
         view=password_change_done,
         kwargs={
             'extra_context': {'testing': settings.TESTING},
-            'template_name': 'project/password_change_done.html',
+            'template_name': 'login/password_change_done.html',
         },
         name='password_change_done'
         ),
@@ -58,7 +58,7 @@ urlpatterns = [
         kwargs={
             'extra_context': {'testing': settings.TESTING},
             'password_reset_form': PasswordResetNotifyForm,
-            'template_name': 'project/password_reset.html'
+            'template_name': 'login/password_reset.html'
         },
         name='password_reset'
         ),
@@ -69,7 +69,7 @@ urlpatterns = [
         view=password_reset_complete,
         kwargs={
             'extra_context': {'testing': settings.TESTING},
-            'template_name': 'project/password_reset_complete.html'
+            'template_name': 'login/password_reset_complete.html'
         },
         name='password_reset_complete'
         ),
@@ -77,7 +77,7 @@ urlpatterns = [
         view=password_reset_confirm,
         kwargs={
             'extra_context': {'testing': settings.TESTING},
-            'template_name': 'project/password_reset_confirm.html',
+            'template_name': 'login/password_reset_confirm.html',
         },
         name='password_reset_confirm'
         ),
@@ -85,7 +85,7 @@ urlpatterns = [
         view=password_reset_done,
         kwargs={
             'extra_context': {'testing': settings.TESTING},
-            'template_name': 'project/password_reset_done.html'
+            'template_name': 'login/password_reset_done.html'
         },
         name='password_reset_done'
         ),
