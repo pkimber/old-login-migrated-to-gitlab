@@ -61,7 +61,7 @@ class UpdateUserNameView(
 
     form_class = UserNameForm
     model = User
-    template_name = 'project/update_user_name.html'
+    template_name = 'login/update_user_name.html'
 
 
 class UpdateUserPasswordView(
@@ -70,7 +70,7 @@ class UpdateUserPasswordView(
 
     form_class = SetPasswordForm
     model = User
-    template_name = 'project/update_user_password.html'
+    template_name = 'login/update_user_password.html'
 
     def get_form_kwargs(self):
         kwargs = super(UpdateUserPasswordView, self).get_form_kwargs()
