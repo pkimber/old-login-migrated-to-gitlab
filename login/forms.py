@@ -41,11 +41,15 @@ class PasswordResetNotifyForm(PasswordResetForm):
                         "(user is active and has a usable password)."
                     )
                 else:
-                    body.append("  - Password reset email has NOT been sent.  ")
+                    body.append(
+                        "  - Password reset email has NOT been sent.  "
+                    )
                     if not user.is_active:
                         body.append("  - (user is NOT active).")
                     if not user.has_usable_password():
-                        body.append("  - (user does NOT have a usable password).")
+                        body.append(
+                            "  - (user does NOT have a usable password)."
+                        )
         else:
             body.append(
                 "There are no users on the system with this email address."
