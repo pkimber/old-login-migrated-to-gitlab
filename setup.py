@@ -27,10 +27,10 @@ setup(
             'templates/login/*.*',
         ],
     },
-    version='0.1.54',
+    version='0.1.55',
     description='User Login',
-    author='Patrick Kimber',
-    author_email='code@pkimber.net',
+    author='Malcolm Dinsmore',
+    author_email='code-md@kbsoftware.co.uk',
     url='git@github.com:pkimber/login.git',
     classifiers=[
         'Development Status :: 1 - Planning',
