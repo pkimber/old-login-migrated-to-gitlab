@@ -11,12 +11,14 @@
 {% block content %}
   <div class="pure-g">
     <div class="pure-u-1">
-      {% include '_form.html' with legend='Login' submit='Log in' %}
-      <p>
-        <a href="{% url 'password_reset' %}">
-          Click here if you have forgotten your password...
-        </a>
-      </p>
+      <div class="l-box">
+        {% include '_form.html' with legend = 'Login' submit = 'Log in' %}
+        <p>
+          <a href="{% url 'password_reset' %}">
+            Click here if you have forgotten your password...
+          </a>
+        </p>
+      </div>
     </div>
   </div>
 {% endblock %}
