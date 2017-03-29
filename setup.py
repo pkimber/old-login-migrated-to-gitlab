@@ -27,7 +27,7 @@ setup(
             'templates/login/*.*',
         ],
     },
-    version='0.1.55',
+    version='0.1.56',
     description='User Login',
     author='Malcolm Dinsmore',
     author_email='code-md@kbsoftware.co.uk',
