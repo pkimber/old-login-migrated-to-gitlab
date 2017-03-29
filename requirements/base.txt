@@ -7,3 +7,4 @@ Django==1.10.6
 djrill==2.1.0
 pytz==2016.10
 redis==2.10.5
+social-auth-app-django==1.1.0
