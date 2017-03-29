@@ -7,74 +7,72 @@
 {% block content %}
   <div class="pure-g">
     <div class="pure-u-1">
-      <div class="l-box">
-        <h2>
-          Congratulations '{{ user.username }}'... you are logged in!
-        </h2>
+      <h2>
+        Congratulations '{{ user.username }}'... you are logged in!
+      </h2>
+      <p>
+        <a href="{% url 'project.home' %}">Home</a>
+      </p>
+      <p>
+        Page is used in unit tests for login
+        <strong>required</strong> with redirect parameter
+      </p>
+      {% if not user.is_authenticated %}
         <p>
-          <a href="{% url 'project.home' %}">Home</a>
+          <a href="{% url 'login' %}">Login</a>
+        </p>
+      {% endif %}
+      {% if user.is_authenticated %}
+        <p>
+          <a href="{% url 'password_change' %}">Change password</a>
         </p>
         <p>
-          Page is used in unit tests for login
-          <strong>required</strong> with redirect parameter
+          <a href="{% url 'logout' %}">Logout</a>
         </p>
-        {% if not user.is_authenticated %}
-          <p>
-            <a href="{% url 'login' %}">Login</a>
-          </p>
-        {% endif %}
-        {% if user.is_authenticated %}
-          <p>
-            <a href="{% url 'password_change' %}">Change password</a>
-          </p>
-          <p>
-            <a href="{% url 'logout' %}">Logout</a>
-          </p>
-        {% endif %}
-        {% if user.is_staff %}
-          <p>You are a member of staff</p>
-          <p>
-            <a href="{% url 'password_reset_audit_report' %}">Password Reset Audit Report</a>
-          </p>
-          <table class="pure-table pure-table-bordered">
-            <thead>
+      {% endif %}
+      {% if user.is_staff %}
+        <p>You are a member of staff</p>
+        <p>
+          <a href="{% url 'password_reset_audit_report' %}">Password Reset Audit Report</a>
+        </p>
+        <table class="pure-table pure-table-bordered">
+          <thead>
+            <tr>
+              <th>User name</th>
+              <th>Password</th>
+              <th>Name</th>
+              <th>Last login</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for u in users %}
               <tr>
-                <th>User name</th>
-                <th>Password</th>
-                <th>Name</th>
-                <th>Last login</th>
+                {% if u == request_user %}
+                  <td></td>
+                  <td></td>
+                {% else %}
+                  <td>
+                    <a href="{% url 'update_user_name' u.pk %}">
+                      <i class="fa fa-edit"></i>
+                      {{ u.username }}
+                    </a>
+                  </td>
+                  <td>
+                    <a href="{% url 'update_user_password' u.pk %}">
+                      <i class="fa fa-edit"></i>
+                      ********
+                    </a>
+                  </td>
+                {% endif %}
+                <td>{{ u.first_name }} {{ u.last_name }}</td>
+                <td>{{ u.last_login }}</td>
               </tr>
-            </thead>
-            <tbody>
-              {% for u in users %}
-                <tr>
-                  {% if u == request_user %}
-                    <td></td>
-                    <td></td>
-                  {% else %}
-                    <td>
-                      <a href="{% url 'update_user_name' u.pk %}">
-                        <i class="fa fa-edit"></i>
-                        {{ u.username }}
-                      </a>
-                    </td>
-                    <td>
-                      <a href="{% url 'update_user_password' u.pk %}">
-                        <i class="fa fa-edit"></i>
-                        ********
-                      </a>
-                    </td>
-                  {% endif %}
-                  <td>{{ u.first_name }} {{ u.last_name }}</td>
-                  <td>{{ u.last_login }}</td>
-                </tr>
-              {% endfor %}
-            </tbody>
-          </table>
-        {% else %}
-          <p>You are NOT a member of staff</p>
-        {% endif %}
-      </div>
+            {% endfor %}
+          </tbody>
+        </table>
+      {% else %}
+        <p>You are NOT a member of staff</p>
+      {% endif %}
     </div>
   </div>
 {% endblock content %}

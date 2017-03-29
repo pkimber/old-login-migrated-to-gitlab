@@ -1,43 +1,61 @@
 {% extends 'dash/base.html' %}
 
+{% block sub_title %}
+  Home
+{% endblock sub_title %}
+
+{% block sub_heading %}
+  Home
+{% endblock sub_heading %}
+
 {% block content %}
-  <div class="pure-u-1">
-    {% if user.is_authenticated %}
+  <div class="pure-g">
+    <div class="pure-u-1">
       <table class="pure-table">
         <thead>
           <tr>
-            <th>User Name</th>
             <th>Is authenticated</th>
+            <th>User Name</th>
             <th>Last login</th>
           </tr>
         </thead>
         <tbody>
           <tr>
+            <td>
+              {% if user.is_authenticated %}
+                Yes
+              {% else %}
+                <strong>NOT</strong> authenticated
+              {% endif %}
+            </td>
             <td>{{ user.username }}</td>
-            <td>{{ user.is_authenticated }}</td>
-            <td>{{ user.last_login }}</td>
+            <td>
+              {% if user.login %}
+                {{ user.last_login|date:'d/m/Y H:i' }}
+              {% endif %}
+            </td>
           </tr>
         </tbody>
       </table>
-    {% endif %}
-    {% if not user.is_authenticated %}
-      <p>
-        <a href="{% url 'register' %}">Register</a>
-      </p>
-      <p>
-        <a href="{% url 'login' %}">Login</a>
-      </p>
-      <p>
-        <a href="{% url 'password_reset' %}">Reset password</a>
-      </p>
-      <p>
-        <a href="{% url 'example.test' %}">Navigate to login protected test page</a>
-      </p>
-    {% endif %}
-    {% if user.is_authenticated %}
-      <p>
-        <a href="{% url 'logout' %}">Logout</a>
-      </p>
-    {% endif %}
+      {% if not user.is_authenticated %}
+        <p>
+          <a href="{% url 'register' %}">Register</a>
+        </p>
+        <p>
+          <a href="{% url 'login' %}">Login</a>
+        </p>
+        <p>
+          <a href="{% url 'password_reset' %}">Reset password</a>
+        </p>
+        <p>
+          <a href="{% url 'example.test' %}">Navigate to login protected test page</a>
+        </p>
+      {% endif %}
+      {% if user.is_authenticated %}
+        <p>
+          <a href="{% url 'logout' %}">Logout</a>
+        </p>
+      {% endif %}
+    </div>
   </div>
 {% endblock content %}
