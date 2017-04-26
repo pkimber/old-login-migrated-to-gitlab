@@ -48,7 +48,12 @@ class PermTest:
     def anon(self, url):
         self.client.logout()
         response = self.client.get(url)
-        message = "'url should be public '{}'".format(url)
+        message = (
+            "'url should be public '{}', status_code: {}, context: {}".format(
+                url,
+                response.status_code,
+                response.context,
+        ))
         assert 200 == response.status_code, message
 
     def auth(self, url, expect=None, expect_location=None):
